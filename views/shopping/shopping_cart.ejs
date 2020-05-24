@@ -1,0 +1,46 @@
+<% if(products) { %>
+	<% for(var i=0; i < products.length; i++) { %>
+		<div class="row">
+		    <div class="col-sm-6 col-md-6 offset-md-3 offset-sm-3 ">
+				    <ul class="list-group">
+			    		<li class="list-group-item">
+				    		<strong><%= products[i].item.name %></strong>
+				    		<span class="badge badge-pill badge-success">Rs.<%= products[i].item.price %></span>
+				    		<div class="btn-group">
+				    			<button class="btn btn-primary btn-xs dropdown-toggle" type="button" data-toggle="dropdown">Action<span class="caret"></span></button>
+				    			<ul class="dropdown-menu">
+				    				<li><a href="/reduce/<%= products[i].item._id %>">Reduce by 1</a></li>
+				    				<li><a href="/remove/<%= products[i].item._id %>">Remove all</a></li>
+				    			</ul>
+				    		</div>
+				    		<span class="badge badge-dark float-right"><%= products[i].qty %></span>
+				    	</li>
+				    </ul>
+				</div>
+		  </div>
+	<% } %>
+  
+
+	<div class="row">
+	    <div class="col-sm-6 col-md-6 offset-md-3 offset-sm-3">
+	    	<strong>Total: <%= totalPrice %> </strong>
+	    </div>
+	</div>
+	<hr>
+	<div class="row">
+	    <div class="col-sm-6 col-md-6 offset-md-3 offset-sm-3">
+	    	<a href="/checkout" type="button" class="btn btn-success">Checkout</a>
+	    </div>
+	</div>
+<%} else { %>
+  <div class="row">
+    <div class="col-sm-6 col-md-6 offset-md-3 offset-sm-3">
+    	<strong><h1>No items in the cart </h1></strong>
+    </div>
+</div>
+<% } %>  
+
+
+
+
+
